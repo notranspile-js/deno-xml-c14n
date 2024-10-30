@@ -1,4 +1,5 @@
-var ExclusiveCanonicalisation = require("./lib/algorithm/exclusive-canonicalisation");
+
+import { ExclusiveCanonicalisation } from "./lib/algorithm/exclusive-canonicalisation.js";
 
 var builtIn = {
   algorithms: {
@@ -13,7 +14,7 @@ var builtIn = {
   },
 };
 
-var CanonicalisationFactory = module.exports = function CanonicalisationFactory() {
+function CanonicalisationFactory() {
   if (!(this instanceof CanonicalisationFactory)) {
     return new CanonicalisationFactory();
   }
@@ -34,3 +35,5 @@ CanonicalisationFactory.prototype.getAlgorithm = function getAlgorithm(uri) {
 CanonicalisationFactory.prototype.createCanonicaliser = function createCanonicaliser(uri, options) {
   return this.algorithms[uri](options);
 };
+
+export { CanonicalisationFactory };
